@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classes from "./Register.module.css";
+import { FaUser,FaKey,FaAt,FaPhone } from "react-icons/fa";
 
 const Register = () => {
   const [errors, setErrors] = useState({});
@@ -53,28 +54,28 @@ const Register = () => {
     return errors;
   };
   return (
-    
-    
-   
     <div className={classes.container}>
+  
       {isSubmitted && Object.keys(errors).length === 0 && (
         <p className={classes.success}>Form submitted successfully!</p>
       )}
- 
+
       <h2 className={classes.title}>Registration Form</h2>
+      
       <form onSubmit={handleOnSubmit}>
         <div className={classes.form}>
           <div className={classes.field}>
             <label>
-              User Name
-              <input
+              <span className={classes.icon}><FaUser/></span>
+            
+           <input 
                 type="text"
                 name="name"
                 placeholder="User Name"
                 values={inputData.name}
                 onChange={handleOnChange}
                 className={classes.input}
-              />
+              />  
             </label>
 
             {errors.name && <p className={classes.error}>{errors.name}</p>}
@@ -82,14 +83,17 @@ const Register = () => {
 
           <div className={classes.field}>
             <label>
-              Password
-              <input
+        <span className={classes.icon}><FaKey/></span>
+        
+             <input 
                 type="password"
                 name="password"
                 placeholder="Password"
                 values={inputData.password}
                 onChange={handleOnChange}
                 className={classes.input}
+              
+                
               />
             </label>
             {errors.password && (
@@ -98,11 +102,11 @@ const Register = () => {
           </div>
           <div className={classes.field}>
             <label>
-              Email
+            <span className={classes.icon}><FaAt/></span>
               <input
                 type="text"
                 name="email"
-                placeholder="admin@"
+                placeholder="Email"
                 values={inputData.email}
                 onChange={handleOnChange}
                 className={classes.input}
@@ -112,11 +116,12 @@ const Register = () => {
           </div>
           <div className={classes.field}>
             <label>
-              Contact No.
+          <span className={classes.icon}><FaPhone/></span>
               <input
                 type="number"
                 name="contact"
                 placeholder="+91"
+                
                 values={inputData.contact}
                 onChange={handleOnChange}
                 className={classes.input}
@@ -131,11 +136,7 @@ const Register = () => {
           </button>
         </div>
       </form>
-    
     </div>
-       
-
-    
   );
 };
 
